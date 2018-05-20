@@ -3,8 +3,13 @@
     "cSpell.words": [
         "Armbian",
         "OLED",
+        "adafruit",
+        "autoremove",
+        "dtparam",
         "markdownlint",
         "orangepi",
+        "raspberrypi",
+        "raspbian",
         "spidev",
         "stadler",
         "sunxi",
