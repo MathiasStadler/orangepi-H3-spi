@@ -137,6 +137,47 @@ http://www.orangepi.org/orangepibbsen/forum.php?mod=viewthread&tid=202
 
 
 
+## eth0:avahi
+
+```txt
+Avahi is a daemon (a service) which is responsible for several things, including attributing you an IP address when DHCP (automatic IP address from a DHCP server on the network) fails. The fact that eth0:avahi appears means that the system failed to get an IP on the eth0 interface (your wired network interface).
+```
+
+[from here 2nd article](https://askubuntu.com/questions/3159/delete-eth0-avahi-from-the-ifconfig-list)
+
+### troubleshooting no dhcp ip address
+
+- fix your /etc/network/interfaces e.g. to
+
+```bash
+auto lo
+iface lo inet loopback
+
+auto eth0
+iface eth0 inet dhcp
+```
+
+- and restart your network services
+
+```bash
+> sudo /etc/init.d/networking restart
+```
+
+## connect serial console
+
+```bash
+> picocom -b 115200 /dev/ttyUSB0
+```
+
+
+## dhcp dump
+
+- on each client in the network
+
+```bash
+> sudo tcpdump -lenx -i enp0s25 -s 1500 port bootps or port bootpc
+```
+
 
 ## rest
 https://www.youtube.com/watch?v=XNPoO3JLppA
